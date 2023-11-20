@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 
 function UnauthenticatedRoutes() {
   if (isAuthenticated()) {
-    return <Navigate to="/lowongan" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   return <Outlet />;
