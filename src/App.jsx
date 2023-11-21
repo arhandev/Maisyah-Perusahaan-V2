@@ -6,6 +6,8 @@ import UnauthenticatedRoutes from "./components/UnauthenticatedRoutes";
 import Login from "./pages/login";
 import AuthenticatedRoutes from "./components/AuthenticatedRoutes";
 import Dashboard from "./pages/dashboard";
+import Register from "./pages/regiser/firstForm";
+import SecondRegister from "./pages/regiser/secondForm";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
           {
             path: "login",
             element: <Login />,
+          },
+          {
+            path: "register",
+            element: <Register />,
+          },
+          {
+            path: "register/2",
+            element: <SecondRegister />,
           },
         ],
       },
