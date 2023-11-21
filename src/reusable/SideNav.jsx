@@ -1,12 +1,11 @@
 import { Badge, Drawer } from "antd";
 import { isEmpty } from "lodash";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useUserStore } from "@/store/userStore";
 import { Link } from "react-router-dom";
 
 function SideNav() {
-  const user = useSelector((state) => state.user);
-  const notification = useSelector((state) => state.notification);
+  const { userData } = useUserStore((state) => state);
   const pathName = window.location.pathname.split("/")[2];
   const [mobileNav, setMobileNav] = useState(false);
 
@@ -103,7 +102,7 @@ function SideNav() {
                 }`}
               >
                 <div>
-                  <Badge count={notification.data.not_read_count}>
+                  <Badge count={0}>
                     <img
                       src={
                         pathName === "notification"
@@ -239,10 +238,10 @@ function SideNav() {
           <div>
             <img src={"/images/bxs_user-circle.svg"} className="w-20" alt="" />
           </div>
-          <div className="font-bold text-lg">{user.data?.name}</div>
+          <div className="font-bold text-lg">{userData.data?.name}</div>
           <div className="text-center text-sm">
-            {user.data?.user_company?.posisi_perusahaan} di{" "}
-            {user.data?.user_company?.company.nama_perusahaan}
+            {userData.data?.user_company?.posisi_perusahaan} di{" "}
+            {userData.data?.user_company?.company.nama_perusahaan}
           </div>
         </div>
       </div>
@@ -362,7 +361,7 @@ function SideNav() {
                   }`}
                 >
                   <div>
-                    <Badge count={notification.data.not_read_count}>
+                    <Badge count={0}>
                       <img
                         src={
                           pathName === "notification"
