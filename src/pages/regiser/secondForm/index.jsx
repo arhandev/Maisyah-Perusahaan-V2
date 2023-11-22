@@ -180,7 +180,7 @@ function SecondRegister() {
                 size="large"
               />
             </FormItem>
-            {/* POSISI */}
+            {/* DESKRIPSI */}
             <FormItem
               label="Deskripsi Perusahaan"
               error={getErrorValue(

@@ -8,6 +8,7 @@ import AuthenticatedRoutes from "./components/AuthenticatedRoutes";
 import Dashboard from "./pages/dashboard";
 import Register from "./pages/regiser/firstForm";
 import SecondRegister from "./pages/regiser/secondForm";
+import CompanyProfile from "./pages/companyProfile";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard",
             element: <Dashboard />,
+          },
+          {
+            path: "/dashboard/company-profile",
+            element: <CompanyProfile />,
           },
         ],
       },
