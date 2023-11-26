@@ -10,8 +10,8 @@ export const useUserStore = create((set) => ({
     return set((state) => ({ ...state, userData: data }));
   },
   deleteUser: () => {
-    Cookies.remove("user_pencaker");
-    Cookies.remove("token_pencaker");
+    Cookies.remove("user_perusahaan");
+    Cookies.remove("token_perusahaan");
     return set((state) => ({ ...state, userData: {} }));
   },
 }));

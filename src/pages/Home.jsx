@@ -1,7 +1,8 @@
 import { Drawer } from "antd";
 import { useEffect, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, createSearchParams, useSearchParams } from "react-router-dom";
 import Footer from "../components/Footer";
+import { IconSearch } from "@tabler/icons-react";
 
 function Home() {
   const [mobileNav, setMobileNav] = useState(false);
@@ -159,24 +160,23 @@ function Home() {
               Gabung dengan maisyah.id dan dapatkan pekerjaan terbaik untuk
               Anda!
             </h2>
-            <div className="flex p-2 border border-l-8 border-left-blue rounded-r-3xl rounded-l-lg w-5/6 items-center bg-white max-w-lg">
+            <div className="flex p-2 border border-gray-300 border-solid border-l-8 border-l-primary rounded-r-3xl rounded-l-lg w-5/6 bg-white max-w-lg">
               <div className="w-11/12">
                 <input
                   type="text"
-                  className="w-full h-full outline-none pl-4 text-gray-500"
+                  className="w-full h-full border-none outline-none pl-4 text-gray-500 text-xl"
                   placeholder="Cari pekerjaan, perusahaan, atau keyword"
                   onChange={(e) => setSearch(e.target.value)}
                 />
               </div>
-              <Link to={{ pathname: "/lowongan", query: { search } }}>
+              <Link
+                to={{
+                  pathname: "/lowongan",
+                  search: createSearchParams({ search }).toString(),
+                }}
+              >
                 <div className="p-4 bg-secondary rounded-2xl">
-                  <img
-                    width={32}
-                    height={32}
-                    src="/images/landing/search.png"
-                    className="w-6"
-                    alt=""
-                  />
+                  <IconSearch size={32} className="text-white" />
                 </div>
               </Link>
             </div>

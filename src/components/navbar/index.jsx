@@ -1,15 +1,17 @@
+import { useUserStore } from "@/store/userStore";
 import {
   IconBookmark,
   IconLogout,
   IconSend,
   IconUserCircle,
 } from "@tabler/icons-react";
-import { Button, ConfigProvider, Drawer, Dropdown } from "antd";
+import { Button, ConfigProvider, Drawer, Dropdown, message } from "antd";
 import { isEmpty } from "lodash";
 import { useState } from "react";
 import { Link, createSearchParams, useNavigate } from "react-router-dom";
 import MenuItem from "./_partials/MenuItem";
 import MobileMenu from "./_partials/MobileMenu";
+import { useLogout } from "../../query/auth/useLogout";
 
 const menuItem = [
   {
@@ -90,15 +92,19 @@ const mobileMenuItem = [
 
 function Navbar() {
   const [mobileNav, setMobileNav] = useState(false);
-  // const { deleteUser, userData } = useUserStore((state) => state);
+  const { deleteUser, userData } = useUserStore((state) => state);
 
   const navigate = useNavigate();
 
-  // const onSettled = () => {
-  //   message.success("Berhasil Melakukan Logout");
-  //   deleteUser();
-  //   navigate("/login");
-  // };
+  const onSettled = () => {
+    message.success("Berhasil Melakukan Logout");
+    deleteUser();
+    navigate("/login");
+  };
+
+  const { mutate: logout } = useLogout({
+    onSettled,
+  });
 
   const profileDropdownMenu = [
     {
