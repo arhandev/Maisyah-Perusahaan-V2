@@ -1,12 +1,10 @@
 import { Empty, message } from "antd";
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import JobCard from "./_partials/JobCard";
-import LamaranCard from "./_partials/LamaranCard";
-import SideNav from "../../reusable/SideNav";
-import ErrorPage from "../ErrorPage";
 import { useGetDashboard } from "../../query/dashboard/useGetDashboard";
 import Loading from "../../reusable/Loading";
+import ErrorPage from "../ErrorPage";
+import JobCard from "./_partials/JobCard";
+import LamaranCard from "./_partials/LamaranCard";
 
 function Dashboard() {
   const [messageApi, contextHolder] = message.useMessage();
@@ -31,10 +29,8 @@ function Dashboard() {
   }
 
   return (
-    <div className="bg-white flex flex-col lg:flex-row lg:gap-10 text-gray-custom">
+    <div className="flex flex-col lg:flex-row lg:gap-10 text-gray-custom">
       {contextHolder}
-      <SideNav />
-      <div className="hidden lg:block w-72"></div>
       {isLoading ? (
         <Loading />
       ) : (

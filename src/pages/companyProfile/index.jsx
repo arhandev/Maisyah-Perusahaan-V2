@@ -1,26 +1,16 @@
-import {
-  Button,
-  ConfigProvider,
-  Empty,
-  Form,
-  Input,
-  Select,
-  message,
-} from "antd";
-import { LoadingOutlined } from "@ant-design/icons";
 import { getErrorValue } from "@/utils/getErrors";
-import { useNavigate } from "react-router-dom";
-import SideNav from "../../reusable/SideNav";
-import ErrorPage from "../ErrorPage";
+import { LoadingOutlined } from "@ant-design/icons";
+import { IconBookmarkFilled, IconEdit } from "@tabler/icons-react";
+import { Button, ConfigProvider, Form, Input, Select, message } from "antd";
+import FormItem from "antd/es/form/FormItem";
+import TextArea from "antd/es/input/TextArea";
+import { useFormik } from "formik";
+import { useState } from "react";
+import * as Yup from "yup";
 import { useGetDashboard } from "../../query/dashboard/useGetDashboard";
 import Loading from "../../reusable/Loading";
 import { jumlahKaryawanData } from "../../utils/selectData";
-import { useState } from "react";
-import { useFormik } from "formik";
-import { IconBookmarkFilled, IconEdit } from "@tabler/icons-react";
-import FormItem from "antd/es/form/FormItem";
-import * as Yup from "yup";
-import TextArea from "antd/es/input/TextArea";
+import ErrorPage from "../ErrorPage";
 
 const loadingIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -112,10 +102,8 @@ function CompanyProfile() {
   }
 
   return (
-    <div className="bg-white flex flex-col lg:flex-row lg:gap-10 text-gray-custom">
+    <div className="flex flex-col lg:flex-row lg:gap-10 text-gray-custom">
       {contextHolder}
-      <SideNav />
-      <div className="hidden lg:block w-72"></div>
       {isLoading ? (
         <Loading />
       ) : (
