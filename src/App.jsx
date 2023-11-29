@@ -10,6 +10,7 @@ import Dashboard from "./pages/dashboard";
 import Login from "./pages/login";
 import Register from "./pages/regiser/firstForm";
 import SecondRegister from "./pages/regiser/secondForm";
+import Notification from "./pages/notification";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/company-profile",
             element: <CompanyProfile />,
+          },
+          {
+            path: "/dashboard/notification",
+            element: <Notification />,
           },
         ],
       },

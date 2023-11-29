@@ -5,11 +5,13 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Prerequest from "./components/Prerequest.jsx";
 
 dayjs().format();
 dayjs.locale("id");
+dayjs.extend(duration);
 
 const queryClient = new QueryClient();
 
