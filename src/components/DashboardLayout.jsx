@@ -7,6 +7,7 @@ import {
   IconChevronRight,
   IconLayoutDashboard,
   IconLogout,
+  IconUserSquareRounded,
 } from "@tabler/icons-react";
 import { Button, Layout, Menu } from "antd";
 import React, { useState } from "react";
@@ -39,6 +40,11 @@ function DashboardLayout({ children }) {
     {
       key: "/dashboard/lowongan",
       icon: <IconBriefcase size={24} className="-mb-1" />,
+      label: <Link to="/dashboard/lowongan">Lowongan</Link>,
+    },
+    {
+      key: "/dashboard/kandidat",
+      icon: <IconUserSquareRounded size={24} className="-mb-1" />,
       label: <Link to="/dashboard/lowongan">Lowongan</Link>,
     },
     {
