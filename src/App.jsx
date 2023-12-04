@@ -13,6 +13,7 @@ import SecondRegister from "./pages/regiser/secondForm";
 import Notification from "./pages/notification";
 import Lowongan from "./pages/lowongan";
 import CreateLowongan from "./pages/lowongan/create_lowongan/CreateLowongan";
+import Kandidat from "./pages/kandidat";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ const router = createBrowserRouter([
           {
             path: "dashboard/lowongan/create",
             element: <CreateLowongan />,
+          },
+          {
+            path: "dashboard/kandidat",
+            element: <Kandidat />,
           },
         ],
       },
