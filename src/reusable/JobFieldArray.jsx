@@ -61,6 +61,7 @@ function JobFieldArray({
             <FormItem
               label={isEmpty(value) && label}
               wrapperCol={{ span: 18, offset: isEmpty(value) ? 0 : 5 }}
+              className="font-bold"
             >
               <div
                 onClick={() => push("")}

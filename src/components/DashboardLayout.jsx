@@ -5,6 +5,7 @@ import {
   IconBuilding,
   IconChevronLeft,
   IconChevronRight,
+  IconCoin,
   IconLayoutDashboard,
   IconLogout,
   IconUserSquareRounded,
@@ -45,7 +46,12 @@ function DashboardLayout({ children }) {
     {
       key: "/dashboard/kandidat",
       icon: <IconUserSquareRounded size={24} className="-mb-1" />,
-      label: <Link to="/dashboard/lowongan">Lowongan</Link>,
+      label: <Link to="/dashboard/kandidat">Kandidat</Link>,
+    },
+    {
+      key: "/dashboard/transaction",
+      icon: <IconCoin size={24} className="-mb-1" />,
+      label: <Link to="/dashboard/transaction">Transaksi</Link>,
     },
     {
       key: "logout",

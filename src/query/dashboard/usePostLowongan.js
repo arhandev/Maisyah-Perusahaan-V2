@@ -1,20 +1,20 @@
 import { request } from "@/utils/request";
 import { useMutation } from "react-query";
 
-const postEditLowongan = ({ value, id }) => {
+const postLowongan = (input) => {
   return request({
-    url: `/perusahaan/jobs/${id}`,
-    method: "put",
-    data: value,
+    url: `/perusahaan/jobs`,
+    method: "post",
+    data: input,
   });
 };
 
-export const useEditLowongan = ({
+export const usePostLowongan = ({
   onSuccess = () => {},
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(postEditLowongan, {
+  return useMutation(postLowongan, {
     onSuccess,
     onError,
     onSettled,

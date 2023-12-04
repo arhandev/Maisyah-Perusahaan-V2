@@ -58,7 +58,9 @@ const initialState = {
 
 function ModalContent({ jobData, messageApi, fetchJobs }) {
   const [input, setInput] = useState(initialState);
-  const [search, setSearch] = useState(jobData.district.name);
+  const [search, setSearch] = useState(
+    jobData.district != null ? jobData.district.name : ""
+  );
   const [edit, setEdit] = useState(false);
   const [errorMessage, setErrorMessage] = useState({});
 
@@ -67,13 +69,11 @@ function ModalContent({ jobData, messageApi, fetchJobs }) {
   }, 500);
 
   const onSubmit = (value) => {
-    console.log(value);
     editLowongan({ value, id: jobData.id });
   };
 
   const onEditSuccess = (response) => {
     setEdit(false);
-    console.log(response);
     setSearch(response.data.data.job.district.name);
     fetchJobs();
     messageApi.success("Profile berhasil di update");
@@ -94,7 +94,7 @@ function ModalContent({ jobData, messageApi, fetchJobs }) {
   } = useSearchDistrict({
     id: "district",
     params: { search: search },
-    enabled: !isEmpty(jobData) && jobData.district !== null,
+    enabled: !isEmpty(jobData),
     keepPreviousData: true,
     onError,
   });
@@ -428,20 +428,26 @@ function ModalContent({ jobData, messageApi, fetchJobs }) {
                       filterOption={false}
                       disabled={!edit}
                     >
+                      {isEmpty(district) ? (
+                        <Option value="" disabled>
+                          Pilih Kecamatan tempat kerja
+                        </Option>
+                      ) : (
+                        district.districts.map((item) => (
+                          <Option key={item.id} value={item.id}>
+                            {item.name}{" "}
+                            {item.city.name ? ` - ${item.city.name}` : ""}
+                            {item.city.province?.name
+                              ? ` - ${item.city.province?.name}`
+                              : ""}
+                          </Option>
+                        ))
+                      )}
                       {!isEmpty(district) && (
                         <Option value="" disabled>
                           Pilih Kecamatan tempat kerja
                         </Option>
                       )}
-                      {district.districts.map((item) => (
-                        <Option key={item.id} value={item.id}>
-                          {item.name}{" "}
-                          {item.city.name ? ` - ${item.city.name}` : ""}
-                          {item.city.province?.name
-                            ? ` - ${item.city.province?.name}`
-                            : ""}
-                        </Option>
-                      ))}
                     </Select>
                   </FormItem>
                 )}
