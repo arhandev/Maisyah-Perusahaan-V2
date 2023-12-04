@@ -1,6 +1,11 @@
 import { getErrorValue } from "@/utils/getErrors";
 import { LoadingOutlined } from "@ant-design/icons";
-import { IconBookmarkFilled, IconEdit, IconTrash } from "@tabler/icons-react";
+import {
+  IconBookmarkFilled,
+  IconEdit,
+  IconPlus,
+  IconTrash,
+} from "@tabler/icons-react";
 import {
   Button,
   ConfigProvider,
@@ -588,6 +593,7 @@ function CompanyProfile() {
                               suffix={
                                 edit ? (
                                   <IconTrash
+                                    color="red"
                                     onClick={() => {
                                       remove(index);
                                     }}
@@ -614,11 +620,7 @@ function CompanyProfile() {
                               onClick={() => push("")}
                               className="w-full flex gap-4 items-center border-2 border-dashed border-primary py-3 px-4 rounded-lg bg-primary bg-opacity-10"
                             >
-                              <img
-                                src="/images/company-profile/circle-plus.svg"
-                                alt=""
-                                className="w-8"
-                              />
+                              <IconPlus />
                               <p className="text-lg text-gray-500">
                                 Tambah misi lain
                               </p>
