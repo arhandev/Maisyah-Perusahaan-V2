@@ -7,6 +7,7 @@ import { subscriptionList } from "../../utils/subscriptionList";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 import Loading from "../../reusable/Loading";
+import TransactionModal from "./_partials/TransactionModal";
 
 const Tag = ({ status }) => {
   if (status === "validate") {
@@ -139,6 +140,14 @@ function Transaction() {
         <Loading />
       ) : (
         <div className="grow flex flex-col mx-auto lg:w-full lg:mx-0 lg:mx-14 mb-4 mt-10">
+          {!isEmpty(detailModal) && (
+            <TransactionModal
+              detailModal={detailModal}
+              setDetailModal={setDetailModal}
+              fetchTransactions={refetch}
+              messageApi={messageApi}
+            />
+          )}
           <h1 className="text-3xl font-bold my-3">Transaksi</h1>
           {data.company?.active_subscription ? (
             <header className="border-solid border-2 border-green-custom shadow-lg p-8 flex flex-col lg:flex-row justify-between lg:items-center rounded-xl gap-4">
