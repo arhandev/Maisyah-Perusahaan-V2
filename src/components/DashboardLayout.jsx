@@ -114,10 +114,10 @@ function DashboardLayout({ children }) {
                 alt=""
               />
             </div>
-            <div className="font-bold text-lg">{userData.data?.name}</div>
+            <div className="font-bold text-lg">{userData.name}</div>
             <div className="text-center text-sm">
-              {userData.data?.user_company?.posisi_perusahaan} di{" "}
-              {userData.data?.user_company?.company.nama_perusahaan}
+              {userData.user_company?.posisi_perusahaan} di{" "}
+              {userData.user_company?.company.nama_perusahaan}
             </div>
           </div>
         )}
