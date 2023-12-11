@@ -12,15 +12,29 @@ import {
 } from "@tabler/icons-react";
 import { Button, Layout, Menu } from "antd";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLogout } from "../query/auth/useLogout";
 
 const { Sider, Content } = Layout;
 
 function DashboardLayout({ children }) {
-  const { userData } = useUserStore((state) => state);
+  const { deleteUser, userData } = useUserStore((state) => state);
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
-  const onLogout = async () => {};
+
+  const onLogout = async () => {
+    logout();
+  };
+
+  const onSettled = () => {
+    deleteUser();
+    navigate("/login");
+  };
+
+  const { mutate: logout } = useLogout({
+    onSettled,
+  });
 
   const items = [
     {
