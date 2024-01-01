@@ -10,6 +10,12 @@ import Dashboard from "./pages/dashboard";
 import Login from "./pages/login";
 import Register from "./pages/regiser/firstForm";
 import SecondRegister from "./pages/regiser/secondForm";
+import Notification from "./pages/notification";
+import Lowongan from "./pages/lowongan";
+import CreateLowongan from "./pages/lowongan/create_lowongan/CreateLowongan";
+import Kandidat from "./pages/kandidat";
+import Transaction from "./pages/transaction";
+import CreateAddOns from "./pages/transaction/addons/CreateAddOns";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +56,30 @@ const router = createBrowserRouter([
           {
             path: "/dashboard/company-profile",
             element: <CompanyProfile />,
+          },
+          {
+            path: "/dashboard/notification",
+            element: <Notification />,
+          },
+          {
+            path: "/dashboard/lowongan",
+            element: <Lowongan />,
+          },
+          {
+            path: "dashboard/lowongan/create",
+            element: <CreateLowongan />,
+          },
+          {
+            path: "dashboard/kandidat",
+            element: <Kandidat />,
+          },
+          {
+            path: "dashboard/transaction",
+            element: <Transaction />,
+          },
+          {
+            path: "dashboard/transaction/addons",
+            element: <CreateAddOns />,
           },
         ],
       },

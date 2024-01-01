@@ -5,20 +5,36 @@ import {
   IconBuilding,
   IconChevronLeft,
   IconChevronRight,
+  IconCoin,
   IconLayoutDashboard,
   IconLogout,
+  IconUserSquareRounded,
 } from "@tabler/icons-react";
 import { Button, Layout, Menu } from "antd";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLogout } from "../query/auth/useLogout";
 
 const { Sider, Content } = Layout;
 
 function DashboardLayout({ children }) {
-  const { userData } = useUserStore((state) => state);
+  const { deleteUser, userData } = useUserStore((state) => state);
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
-  const onLogout = async () => {};
+
+  const onLogout = async () => {
+    logout();
+  };
+
+  const onSettled = () => {
+    deleteUser();
+    navigate("/login");
+  };
+
+  const { mutate: logout } = useLogout({
+    onSettled,
+  });
 
   const items = [
     {
@@ -40,6 +56,16 @@ function DashboardLayout({ children }) {
       key: "/dashboard/lowongan",
       icon: <IconBriefcase size={24} className="-mb-1" />,
       label: <Link to="/dashboard/lowongan">Lowongan</Link>,
+    },
+    {
+      key: "/dashboard/kandidat",
+      icon: <IconUserSquareRounded size={24} className="-mb-1" />,
+      label: <Link to="/dashboard/kandidat">Kandidat</Link>,
+    },
+    {
+      key: "/dashboard/transaction",
+      icon: <IconCoin size={24} className="-mb-1" />,
+      label: <Link to="/dashboard/transaction">Transaksi</Link>,
     },
     {
       key: "logout",
@@ -102,10 +128,10 @@ function DashboardLayout({ children }) {
                 alt=""
               />
             </div>
-            <div className="font-bold text-lg">{userData.data?.name}</div>
+            <div className="font-bold text-lg">{userData.name}</div>
             <div className="text-center text-sm">
-              {userData.data?.user_company?.posisi_perusahaan} di{" "}
-              {userData.data?.user_company?.company.nama_perusahaan}
+              {userData.user_company?.posisi_perusahaan} di{" "}
+              {userData.user_company?.company.nama_perusahaan}
             </div>
           </div>
         )}
