@@ -63,7 +63,7 @@ function Lowongan() {
                   onClick={() => {}}
                 >
                   <p className="font-bold text-lg text-secondary">
-                    Edit Profile
+                    Buat Lowongan
                   </p>
                 </Button>
               </ConfigProvider>

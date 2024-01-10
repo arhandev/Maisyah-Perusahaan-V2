@@ -12,9 +12,9 @@ function JobCard({ company, job, setJobData }) {
   const id = searchParams.get("id");
 
   const onClickJob = () => {
-    setJobData(job);
-    searchParams.set("id", job.id);
-    setSearchParams(searchParams);
+    navigate({
+      pathname: `/dashboard/lowongan/edit/${job.id}`,
+    });
   };
 
   const checkColor = () => {

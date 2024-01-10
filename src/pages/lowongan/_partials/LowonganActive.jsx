@@ -33,12 +33,6 @@ function LowonganActive({ status }) {
         <Empty />
       ) : (
         <div className="grid lg:grid-cols-2 2xl:grid-cols-3 mt-4 gap-6">
-          <ModalEdit
-            jobData={jobData}
-            setJobData={setJobData}
-            fetchJobs={refetch}
-            messageApi={messageApi}
-          />
           {data.jobs?.map((item, index) => (
             <JobCard
               key={index}
