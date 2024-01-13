@@ -35,6 +35,7 @@ function NotificationCard({ notif }) {
     onError,
     onSuccess,
   });
+
   if (notif.type === "lamaran") {
     return (
       <div

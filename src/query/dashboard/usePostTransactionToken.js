@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const postTransactionToken = (input) => {
   return request({
@@ -14,7 +14,8 @@ export const useTransactionToken = ({
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(postTransactionToken, {
+  return useMutation({
+    mutationFn: postTransactionToken,
     onSuccess,
     onError,
     onSettled,

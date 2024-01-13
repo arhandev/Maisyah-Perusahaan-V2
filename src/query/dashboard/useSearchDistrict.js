@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const searchDistrict = ({ queryKey }) => {
   const params = queryKey[1];
@@ -11,17 +11,15 @@ const searchDistrict = ({ queryKey }) => {
 };
 
 export const useSearchDistrict = ({
-  onSuccess = () => {},
-  onError = () => {},
   params,
   id,
   extract = true,
   enabled,
   keepPreviousData,
 }) => {
-  return useQuery([id, params], searchDistrict, {
-    onError,
-    onSuccess,
+  return useQuery({
+    queryKey: [id, params],
+    queryFn: searchDistrict,
     enabled: enabled,
     keepPreviousData: keepPreviousData,
     refetchOnWindowFocus: false,

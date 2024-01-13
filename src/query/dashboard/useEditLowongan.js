@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const postEditLowongan = ({ value, id }) => {
   return request({
@@ -14,7 +14,8 @@ export const useEditLowongan = ({
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(postEditLowongan, {
+  return useMutation({
+    mutationFn: postEditLowongan,
     onSuccess,
     onError,
     onSettled,

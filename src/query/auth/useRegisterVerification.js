@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const postRegisterVerification = (input) => {
   return request({
@@ -14,7 +14,8 @@ export const useRegisterVerification = ({
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(postRegisterVerification, {
+  return useMutation({
+    mutationFn: postRegisterVerification,
     onSuccess,
     onError,
     onSettled,

@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const fetchCompanyProfile = ({ queryKey }) => {
   const params = queryKey[1];
@@ -10,16 +10,10 @@ const fetchCompanyProfile = ({ queryKey }) => {
   });
 };
 
-export const useGetCompanyProfile = ({
-  onSuccess = () => {},
-  onError = () => {},
-  params,
-  id,
-  extract = true,
-}) => {
-  return useQuery([id, params], fetchCompanyProfile, {
-    onError,
-    onSuccess,
+export const useGetCompanyProfile = ({ params, id, extract = true }) => {
+  return useQuery({
+    queryKey: [id, params],
+    queryFn: fetchCompanyProfile,
     select: (data) => {
       if (extract) {
         return data.data.data;

@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const fetchJobDetail = ({ queryKey }) => {
   const params = queryKey[1];
@@ -11,16 +11,10 @@ const fetchJobDetail = ({ queryKey }) => {
   });
 };
 
-export const useGetJobDetail = ({
-  onSuccess = () => {},
-  onError = () => {},
-  params = {},
-  id,
-  extract = true,
-}) => {
-  return useQuery([id, params], fetchJobDetail, {
-    onError,
-    onSuccess,
+export const useGetJobDetail = ({ params = {}, id, extract = true }) => {
+  return useQuery({
+    queryKey: [id, params],
+    queryFn: fetchJobDetail,
     select: (data) => {
       if (extract) {
         return data.data.data;

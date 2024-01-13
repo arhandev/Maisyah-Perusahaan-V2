@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const fetchLamaran = ({ queryKey }) => {
   const params = queryKey[1];
@@ -10,16 +10,10 @@ const fetchLamaran = ({ queryKey }) => {
   });
 };
 
-export const useGetLamaran = ({
-  onSuccess = () => {},
-  onError = () => {},
-  params,
-  id,
-  extract = true,
-}) => {
-  return useQuery([id, params], fetchLamaran, {
-    onError,
-    onSuccess,
+export const useGetLamaran = ({ params, id, extract = true }) => {
+  return useQuery({
+    queryKey: [id, params],
+    queryFn: fetchLamaran,
     select: (data) => {
       if (extract) {
         return data.data.data;
