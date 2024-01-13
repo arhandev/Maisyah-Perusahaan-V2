@@ -16,6 +16,7 @@ import CreateLowongan from "./pages/lowongan/create_lowongan/CreateLowongan";
 import Kandidat from "./pages/kandidat";
 import Transaction from "./pages/transaction";
 import CreateAddOns from "./pages/transaction/addons/CreateAddOns";
+import EditLowongan from "./pages/lowongan/editLowongan/EditLowongan";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
           {
             path: "dashboard/lowongan/create",
             element: <CreateLowongan />,
+          },
+          {
+            path: "dashboard/lowongan/edit/:id",
+            element: <EditLowongan />,
           },
           {
             path: "dashboard/kandidat",

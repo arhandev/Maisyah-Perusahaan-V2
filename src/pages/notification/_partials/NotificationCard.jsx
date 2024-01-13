@@ -26,11 +26,7 @@ function NotificationCard({ notif }) {
       });
     } else if (notif.type === "lowongan") {
       navigate({
-        pathname: "/dashboard/lowongan",
-        search: createSearchParams({
-          id: notif.job_id,
-          tab: "aktif",
-        }).toString(),
+        pathname: `/dashboard/lowongan/edit/${notif.job_id}`,
       });
     }
   };
@@ -39,6 +35,7 @@ function NotificationCard({ notif }) {
     onError,
     onSuccess,
   });
+
   if (notif.type === "lamaran") {
     return (
       <div

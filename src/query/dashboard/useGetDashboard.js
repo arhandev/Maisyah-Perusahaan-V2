@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const fetchDashboard = ({ queryKey }) => {
   const params = queryKey[1];
@@ -10,16 +10,10 @@ const fetchDashboard = ({ queryKey }) => {
   });
 };
 
-export const useGetDashboard = ({
-  onSuccess = () => {},
-  onError = () => {},
-  params,
-  id,
-  extract = true,
-}) => {
-  return useQuery([id, params], fetchDashboard, {
-    onError,
-    onSuccess,
+export const useGetDashboard = ({ params, id, extract = true }) => {
+  return useQuery({
+    queryKey: [id, params],
+    queryFn: fetchDashboard,
     select: (data) => {
       if (extract) {
         return data.data.data;

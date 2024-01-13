@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const searchVillage = ({ queryKey }) => {
   const params = queryKey[1];
@@ -11,17 +11,15 @@ const searchVillage = ({ queryKey }) => {
 };
 
 export const useSearchVillage = ({
-  onSuccess = () => {},
-  onError = () => {},
   params,
   id,
   extract = true,
   enabled,
   keepPreviousData,
 }) => {
-  return useQuery([id, params], searchVillage, {
-    onError,
-    onSuccess,
+  return useQuery({
+    queryKey: [id, params],
+    queryFn: searchVillage,
     enabled: enabled,
     keepPreviousData: keepPreviousData,
     refetchOnWindowFocus: false,

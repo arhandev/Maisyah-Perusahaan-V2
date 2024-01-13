@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const readNotification = ({ notifId }) => {
   return request({
@@ -13,7 +13,8 @@ export const useReadNotification = ({
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(readNotification, {
+  return useMutation({
+    mutationFn: readNotification,
     onSuccess,
     onError,
     onSettled,

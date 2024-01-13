@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const postCheckVoucher = (input) => {
   return request({
@@ -14,7 +14,8 @@ export const useCheckVoucher = ({
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(postCheckVoucher, {
+  return useMutation({
+    mutationFn: postCheckVoucher,
     onSuccess,
     onError,
     onSettled,

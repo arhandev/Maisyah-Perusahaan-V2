@@ -1,4 +1,4 @@
-import { ConfigProvider } from "antd";
+import { ConfigProvider, message } from "antd";
 import locale from "antd/locale/id_ID";
 import React from "react";
 import ReactDOM from "react-dom/client";
@@ -6,14 +6,24 @@ import App from "./App.jsx";
 import "./index.css";
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
-import { QueryClient, QueryClientProvider } from "react-query";
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import Prerequest from "./components/Prerequest.jsx";
 
 dayjs().format();
 dayjs.locale("id");
 dayjs.extend(duration);
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error) => {
+      message.error(error.response?.data?.info ?? "Terjadi Sesuatu Error");
+    },
+  }),
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

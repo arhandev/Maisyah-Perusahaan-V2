@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const postLogout = () => {
   return request({ url: "/perusahaan/logout", method: "post", data: {} });
@@ -10,7 +10,8 @@ export const useLogout = ({
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(postLogout, {
+  return useMutation({
+    mutationFn: postLogout,
     onSuccess,
     onError,
     onSettled,

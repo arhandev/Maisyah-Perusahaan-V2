@@ -1,5 +1,5 @@
 import { request } from "@/utils/request";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 
 const postUpdateProfile = (input) => {
   return request({
@@ -17,7 +17,8 @@ export const useUpdateProfile = ({
   onError = () => {},
   onSettled = () => {},
 }) => {
-  return useMutation(postUpdateProfile, {
+  return useMutation({
+    mutationFn: postUpdateProfile,
     onSuccess,
     onError,
     onSettled,
