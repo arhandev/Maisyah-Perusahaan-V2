@@ -16,7 +16,7 @@ export const useGetLamaran = ({ params, id, extract = true }) => {
     queryFn: fetchLamaran,
     select: (data) => {
       if (extract) {
-        return data.data.data;
+        return data.data;
       } else {
         return data;
       }

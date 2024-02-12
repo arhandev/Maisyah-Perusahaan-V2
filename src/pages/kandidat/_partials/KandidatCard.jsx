@@ -25,6 +25,8 @@ function KandidatCard({ lamaran, selected, setSelected }) {
     });
   };
 
+  
+
   return (
     <div
       onClick={selectCard}

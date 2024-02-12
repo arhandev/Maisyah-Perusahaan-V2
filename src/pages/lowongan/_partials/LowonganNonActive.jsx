@@ -1,8 +1,8 @@
-import { Card, Empty, message } from "antd";
-import { useEffect, useState } from "react";
-import JobCard from "./JobCard";
+import { Empty, message } from "antd";
+import { useState } from "react";
 import { useGetJobs } from "../../../query/dashboard/useGetJobs";
 import Loading from "../../../reusable/Loading";
+import JobCard from "./JobCard";
 import ModalEdit from "./ModalEdit";
 
 function LowonganNonActive({ status }) {
@@ -10,17 +10,8 @@ function LowonganNonActive({ status }) {
   const [jobData, setJobData] = useState({});
   const [confirmData, setConfirmData] = useState({});
 
-  const onError = (error) => {
-    console.log(error);
-    messageApi.open({
-      type: "error",
-      content: error.response?.data?.info ?? "Terjadi Sesuatu Error",
-    });
-  };
-
   const { isLoading, data, error, isError, isFetching, refetch } = useGetJobs({
     id: "jobs",
-    onError,
     params: { active: 0, status },
   });
 

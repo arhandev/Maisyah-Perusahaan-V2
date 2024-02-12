@@ -76,6 +76,7 @@ function SettingModal({
   const handleChangeStatus = (value) => {
     setStatus(value);
   };
+  
   return (
     <Modal
       title={<HeaderModal />}
